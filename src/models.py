@@ -33,6 +33,15 @@ class FavoritoUsuario(db.Model):
             "url": self.url,
             "id" : self.id
         }
+    
+    def delete(self):
+        db.session.delete(self)
+        try:
+            db.session.commit()
+            return true
+        except Exception as error:
+            db.session.rollback()
+            return False    
 
     
 
